@@ -1,0 +1,77 @@
+import java.util.*;
+
+// Interface
+interface Shape {
+
+    // Abstract method
+    void draw();
+
+    double area();
+}
+
+// First implementing class
+class Circle implements Shape {
+
+    double radius;
+
+    Circle(double radius) {
+
+        this.radius = radius;
+    }
+
+    // Implement draw()
+    public void draw() {
+
+        System.out.println("Drawing Circle");
+    }
+
+    // Implement area()
+    public double area() {
+
+        return Math.PI * radius * radius;
+    }
+}
+
+// Second implementing class
+class Rectangle implements Shape {
+
+    double length, width;
+
+    Rectangle(double length, double width) {
+
+        this.length = length;
+        this.width = width;
+    }
+
+    // Implement draw()
+    public void draw() {
+
+        System.out.println("Drawing Rectangle");
+    }
+
+    // Implement area()
+    public double area() {
+
+        return length * width;
+    }
+}
+
+public class InterfaceDemo {
+
+    public static void main(String[] args) {
+
+        // Polymorphism using interface reference
+        Shape s1 = new Circle(5);
+
+        Shape s2 = new Rectangle(4, 6);
+
+        // Calling methods
+        s1.draw();
+        System.out.println("Area of Circle: " + s1.area());
+
+        System.out.println();
+
+        s2.draw();
+        System.out.println("Area of Rectangle: " + s2.area());
+    }
+}

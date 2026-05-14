@@ -1,0 +1,141 @@
+import java.util.*;
+
+class Product {
+
+    String name;
+    double price;
+    int quantity;
+
+    // Default Constructor
+    Product() {
+
+        name = "Unknown";
+        price = 0.0;
+        quantity = 0;
+    }
+
+    // Constructor with name and price
+    Product(String name, double price) {
+
+        this.name = name;
+        this.price = price;
+        this.quantity = 1;
+    }
+
+    // Full Constructor
+    Product(String name, double price, int quantity) {
+
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    // Calculate total price of product
+    double getTotalPrice() {
+
+        return price * quantity;
+    }
+}
+
+public class EcommerceSystem {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<Product> cart = new ArrayList<>();
+
+        int n;
+
+        try {
+
+            System.out.print("Enter number of products: ");
+            n = sc.nextInt();
+
+            sc.nextLine(); // Clear buffer
+
+            // User Input for Products
+            for (int i = 0; i < n; i++) {
+
+                System.out.println("\nEnter details for Product " + (i + 1));
+
+                System.out.print("Product Name: ");
+                String name = sc.nextLine();
+
+                System.out.print("Product Price: ");
+                double price = sc.nextDouble();
+
+                System.out.print("Product Quantity: ");
+                int quantity = sc.nextInt();
+
+                sc.nextLine(); // Clear buffer
+
+                // Creating object using constructor
+                Product p = new Product(name, price, quantity);
+
+                // Add product to cart
+                cart.add(p);
+            }
+
+            // Calculate Total Order Cost
+            double total = 0;
+
+            for (Product p : cart) {
+
+                total += p.getTotalPrice();
+            }
+
+            // Discount Policy
+            double discount = 0;
+
+            if (total > 5000) {
+
+                discount = total * 0.20; // 20% Discount
+            }
+
+            else if (total > 2000) {
+
+                discount = total * 0.10; // 10% Discount
+            }
+
+            // Final Amount
+            double finalAmount = total - discount;
+
+            // Invoice Generation
+            System.out.println("\n========== INVOICE ==========");
+
+            for (Product p : cart) {
+
+                System.out.println(
+                        p.name +
+                        " | Price: ₹" + p.price +
+                        " | Quantity: " + p.quantity +
+                        " | Total: ₹" + p.getTotalPrice()
+                );
+            }
+
+            System.out.println("-----------------------------------");
+            System.out.println("Total Amount : ₹" + total);
+            System.out.println("Discount     : ₹" + discount);
+            System.out.println("Final Amount : ₹" + finalAmount);
+            System.out.println("===================================");
+
+        }
+
+        catch (InputMismatchException e) {
+
+            System.out.println("Invalid Input! Please enter correct datatype.");
+        }
+
+        catch (Exception e) {
+
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        finally {
+
+            sc.close();
+            System.out.println("\nProgram Ended.");
+        }
+    }
+}

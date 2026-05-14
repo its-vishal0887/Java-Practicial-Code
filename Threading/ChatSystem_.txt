@@ -1,0 +1,88 @@
+class UserThread extends Thread {
+
+    String userName;
+
+    // Constructor
+    UserThread(String userName) {
+
+        this.userName = userName;
+    }
+
+    // Run method
+    public void run() {
+
+        for (int i = 1; i <= 5; i++) {
+
+            System.out.println(userName +
+                    " : Hello Message " + i);
+
+            try {
+
+                Thread.sleep(1000);
+            }
+
+            catch (InterruptedException e) {
+
+                System.out.println(userName +
+                        " interrupted.");
+            }
+        }
+
+        System.out.println(userName +
+                " chat ended.");
+    }
+}
+
+public class ChatSystem {
+
+    public static void main(String[] args) {
+
+        // Create threads
+        UserThread user1 = new UserThread("Alice");
+
+        UserThread user2 = new UserThread("Bob");
+
+        UserThread admin = new UserThread("Admin");
+
+        // Set priorities
+        user1.setPriority(Thread.NORM_PRIORITY);
+
+        user2.setPriority(Thread.MIN_PRIORITY);
+
+        admin.setPriority(Thread.MAX_PRIORITY);
+
+        // Start threads
+        user1.start();
+
+        user2.start();
+
+        admin.start();
+
+        // Check thread status
+        System.out.println("Alice Alive: "
+                + user1.isAlive());
+
+        System.out.println("Bob Alive: "
+                + user2.isAlive());
+
+        System.out.println("Admin Alive: "
+                + admin.isAlive());
+
+        try {
+
+            // Wait for all threads
+            user1.join();
+
+            user2.join();
+
+            admin.join();
+        }
+
+        catch (InterruptedException e) {
+
+            System.out.println("Main thread interrupted.");
+        }
+
+        System.out.println("\nAll chats finished.");
+    }
+}

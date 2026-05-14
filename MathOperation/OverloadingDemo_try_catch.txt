@@ -1,0 +1,108 @@
+import java.util.*;
+
+class Calculator {
+
+    // -------- Method Overloading for Absolute Value --------
+
+    int absolute(int num) {
+        return Math.abs(num);
+    }
+
+    double absolute(double num) {
+        return Math.abs(num);
+    }
+
+    long absolute(long num) {
+        return Math.abs(num);
+    }
+
+    // -------- Method Overloading for Power --------
+
+    double power(int base, int exponent) {
+        return Math.pow(base, exponent);
+    }
+
+    double power(double base, double exponent) {
+        return Math.pow(base, exponent);
+    }
+
+    double power(long base, long exponent) {
+        return Math.pow(base, exponent);
+    }
+}
+
+public class OverloadingDemo {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        Calculator cal = new Calculator();
+
+        try {
+
+            // Integer Absolute Value
+            System.out.print("Enter integer value: ");
+            int intNum = sc.nextInt();
+
+            System.out.println("Absolute Value (int): "
+                    + cal.absolute(intNum));
+
+            // Double Absolute Value
+            System.out.print("\nEnter double value: ");
+            double doubleNum = sc.nextDouble();
+
+            System.out.println("Absolute Value (double): "
+                    + cal.absolute(doubleNum));
+
+            // Long Absolute Value
+            System.out.print("\nEnter long value: ");
+            long longNum = sc.nextLong();
+
+            System.out.println("Absolute Value (long): "
+                    + cal.absolute(longNum));
+
+            // Integer Power
+            System.out.print("\nEnter integer base: ");
+            int base1 = sc.nextInt();
+
+            System.out.print("Enter integer exponent: ");
+            int exp1 = sc.nextInt();
+
+            System.out.println("Power (int): "
+                    + cal.power(base1, exp1));
+
+            // Double Power
+            System.out.print("\nEnter double base: ");
+            double base2 = sc.nextDouble();
+
+            System.out.print("Enter double exponent: ");
+            double exp2 = sc.nextDouble();
+
+            System.out.println("Power (double): "
+                    + cal.power(base2, exp2));
+
+            // Long Power
+            System.out.print("\nEnter long base: ");
+            long base3 = sc.nextLong();
+
+            System.out.print("Enter long exponent: ");
+            long exp3 = sc.nextLong();
+
+            System.out.println("Power (long): "
+                    + cal.power(base3, exp3));
+
+        }
+
+        catch (Exception e) {
+
+            System.out.println("Invalid Input!");
+        }
+
+        finally {
+
+            sc.close();
+            System.out.println("\nProgram Ended.");
+        }
+    }
+}
