@@ -1,0 +1,31 @@
+abstract class Animal {
+
+    // Abstract Method
+    abstract void sound();
+
+    // Normal Method
+    void sleep() {
+        System.out.println("Animal is sleeping");
+    }
+}
+
+// Subclass extending abstract class
+class Dog extends Animal {
+
+    // Providing implementation of abstract method
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class abstractDemo {
+
+    public static void main(String[] args) {
+
+        Dog d = new Dog();
+
+        d.sound();
+
+        d.sleep();
+    }
+}

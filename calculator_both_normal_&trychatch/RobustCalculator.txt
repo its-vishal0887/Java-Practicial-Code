@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class RobustCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double num1, num2, result;
+        char op;
+        char choice;
+
+        do {
+            try {
+                // Accept user input dynamically
+                System.out.print("Enter first number: ");
+                num1 = sc.nextDouble();
+
+                System.out.print("Enter operator (+, -, *, /): ");
+                op = sc.next().charAt(0);
+
+                System.out.print("Enter second number: ");
+                num2 = sc.nextDouble();
+
+                // Conditional statements for operation selection
+                switch (op) {
+                    case '+':
+                        result = num1 + num2;
+                        System.out.println("Result = " + result);
+                        break;
+
+                    case '-':
+                        result = num1 - num2;
+                        System.out.println("Result = " + result);
+                        break;
+
+                    case '*':
+                        result = num1 * num2;
+                        System.out.println("Result = " + result);
+                        break;
+
+                    case '/':
+                        if (num2 == 0) {
+                            System.out.println("Error: Division by zero is not allowed.");
+                        } else {
+                            result = num1 / num2;
+                            System.out.println("Result = " + result);
+                        }
+                        break;
+
+                    default:
+                        System.out.println("Invalid operator entered.");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Invalid input! Please enter numeric values.");
+                sc.nextLine(); // clear buffer
+            }
+
+            // Loop for repeated calculations
+            System.out.print("Do you want to continue? (y/n): ");
+            choice = sc.next().charAt(0);
+
+        } while (choice == 'y' || choice == 'Y');
+
+        System.out.println("Calculator closed.");
+        sc.close();
+    }
+}

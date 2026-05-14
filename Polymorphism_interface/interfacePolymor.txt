@@ -1,0 +1,48 @@
+interface Shape {
+
+    void draw();
+
+    void erase();
+}
+
+class Circle implements Shape {
+
+    public void draw() {
+        System.out.println("The Shape is Circle");
+    }
+
+    public void erase() {
+        System.out.println("Circle Erased");
+    }
+}
+
+class Rectangle implements Shape {
+
+    public void draw() {
+        System.out.println("The Shape is Rectangle");
+    }
+
+    public void erase() {
+        System.out.println("Rectangle Erased");
+    }
+}
+
+public class interfacePolymor {
+
+    public static void main(String[] args) {
+
+        Shape s;
+
+        // Circle Object
+        s = new Circle();
+        s.draw();
+        s.erase();
+
+        System.out.println();
+
+        // Rectangle Object
+        s = new Rectangle();
+        s.draw();
+        s.erase();
+    }
+}

@@ -1,0 +1,89 @@
+import java.util.*;
+
+class Calculator {
+
+    // Absolute value methods (Overloading)
+
+    int absolute(int a) {
+        return Math.abs(a);
+    }
+
+    double absolute(double a) {
+        return Math.abs(a);
+    }
+
+    long absolute(long a) {
+        return Math.abs(a);
+    }
+
+    // Power methods (Overloading)
+
+    double power(int a, int b) {
+        return Math.pow(a, b);
+    }
+
+    double power(double a, double b) {
+        return Math.pow(a, b);
+    }
+
+    double power(long a, long b) {
+        return Math.pow(a, b);
+    }
+}
+
+public class overloading1 {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Calculator cal = new Calculator();
+
+        try {
+
+            // Integer Absolute
+            System.out.print("Enter integer value: ");
+            int intNum = sc.nextInt();
+            System.out.println("Absolute value (int): " + cal.absolute(intNum));
+
+            // Double Absolute
+            System.out.print("\nEnter double value: ");
+            double doubleNum = sc.nextDouble();
+            System.out.println("Absolute value (double): " + cal.absolute(doubleNum));
+
+            // Long Absolute
+            System.out.print("\nEnter long value: ");
+            long longNum = sc.nextLong();
+            System.out.println("Absolute value (long): " + cal.absolute(longNum));
+
+            // Integer Power
+            System.out.print("\nEnter base (int): ");
+            int base1 = sc.nextInt();
+
+            System.out.print("Enter exponent (int): ");
+            int exp1 = sc.nextInt();
+
+            System.out.println("Power (int): " + cal.power(base1, exp1));
+
+            // Double Power
+            System.out.print("\nEnter base (double): ");
+            double base2 = sc.nextDouble();
+
+            System.out.print("Enter exponent (double): ");
+            double exp2 = sc.nextDouble();
+
+            System.out.println("Power (double): " + cal.power(base2, exp2));
+
+        }
+
+        catch (Exception e) {
+
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        finally {
+
+            sc.close();
+            System.out.println("\nProgram Ended.");
+        }
+    }
+}

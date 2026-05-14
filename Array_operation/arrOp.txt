@@ -1,0 +1,65 @@
+import java.util.*;
+
+public class arrOp{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Size of Array: ");
+        int n = sc.nextInt();
+
+        int arr[] = new int[n];
+
+        System.out.println("Enter Element:");
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter Elements Are: ");
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i]+" ");
+        }
+
+        System.out.println();
+
+        int max = arr[0];
+        int min = arr[0];
+        for(int i=1; i<n; i++){
+            if(arr[i] > max){
+                max = arr[i];
+            }
+            if(arr[i] < min){
+                min = arr[i];
+            }
+        }
+
+        int sum = 0;
+        for(int i=0; i<n; i++){
+            sum += arr[i];
+        }
+
+        double avg = (double)sum / n;
+
+        int key, found = 0;
+        System.out.println("Enter finding Element: ");
+        key = sc.nextInt();
+
+        for(int i=0; i<n; i++){
+            if(key == arr[i]){
+                System.out.print("The "+key+" is found at "+(i+1)+" position");
+                found = 1;
+                break;
+            }
+        }
+
+        if(found == 0){
+            System.out.println("The "+key+" is not present in array");
+        }
+
+        System.out.println("Maximum: "+max);
+        System.out.println("Minimum: "+min);
+        System.out.println("Sum: "+sum);
+        System.out.println("Mean: "+avg);
+
+        sc.close();
+    }
+}

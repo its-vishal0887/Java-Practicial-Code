@@ -1,0 +1,70 @@
+import java.util.*;
+
+class Person {
+
+    String name;
+    int age;
+
+    // Separate Scanner Object
+    Scanner sc = new Scanner(System.in);
+
+    void getData() {
+
+        System.out.print("Enter Name: ");
+        name = sc.nextLine();
+
+        System.out.print("Enter Age: ");
+        age = sc.nextInt();
+
+        sc.nextLine(); // clear buffer
+    }
+
+    void displayDetail() {
+
+        System.out.println("Name: " + name);
+
+        System.out.println("Age: " + age);
+    }
+}
+
+class Student extends Person {
+
+    String course;
+    int rollNo;
+
+    void getStudentData() {
+
+        System.out.print("Enter Course name: ");
+        course = sc.nextLine();
+
+        System.out.print("Enter Roll no: ");
+        rollNo = sc.nextInt();
+
+        sc.nextLine(); // clear buffer
+    }
+
+    void displayStudentDetail() {
+
+        System.out.println("Course enrolled is: " + course);
+
+        System.out.println("Roll no. is: " + rollNo);
+    }
+}
+
+public class inheritance {
+
+    public static void main(String[] args) {
+
+        Student s = new Student();
+
+        s.getData();
+
+        s.getStudentData();
+
+        System.out.println("\n--- Student Details ---");
+
+        s.displayDetail();
+
+        s.displayStudentDetail();
+    }
+}

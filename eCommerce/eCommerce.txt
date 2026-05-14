@@ -1,0 +1,94 @@
+import java.util.*;
+
+class Product {
+    String name;
+    double price;
+    int quantity;
+
+    // Default constructor
+    Product() {
+        name = "Unknown";
+        price = 0;
+        quantity = 0;
+    }
+
+    // Constructor with name & price
+    Product(String n, double p) {
+        name = n;
+        price = p;
+        quantity = 1;
+    }
+
+    // Constructor with all details
+    Product(String n, double p, int q) {
+        name = n;
+        price = p;
+        quantity = q;
+    }
+
+    // Calculate total
+    double getTotal() {
+        return price * quantity;
+    }
+}
+
+public class eCommerce {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of products: ");
+        int n = sc.nextInt();
+
+        ArrayList<Product> products = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for product " + (i + 1));
+
+            System.out.print("Name: ");
+            String name = sc.next();
+
+            System.out.print("Price: ");
+            double price = sc.nextDouble();
+
+            System.out.print("Quantity: ");
+            int quantity = sc.nextInt();
+
+            Product p = new Product(name, price, quantity);
+            products.add(p); // same as push_back
+        }
+
+        double total = 0;
+
+        for (Product p : products) {
+            total += p.getTotal();
+        }
+
+        // Discount logic
+        double discount = 0;
+
+        if (total > 1000) {
+            discount = total * 0.10;
+        } else if (total > 500) {
+            discount = total * 0.05;
+        }
+
+        double finalAmount = total - discount;
+
+        // Invoice
+        System.out.println("\n===== INVOICE =====");
+
+        for (Product p : products) {
+            System.out.println("Product: " + p.name +
+                    " | Price: " + p.price +
+                    " | Qty: " + p.quantity +
+                    " | Total: " + p.getTotal());
+        }
+
+        System.out.println("\nSubtotal: " + total);
+        System.out.println("Discount: " + discount);
+        System.out.println("Final Amount: " + finalAmount);
+        System.out.println("===================");
+
+        sc.close();
+    }
+}
